@@ -188,4 +188,4 @@ In this post, I'll be explaining about OpenGL and how it works. The purpose of t
     }
     ```
     Run the program and you will see a triangle on your screen that looks like this:
-    ![Output Preview](images/opengl_tutorial_1/output_preview.png "Output preview")
+    ![Output Preview](/images/opengl_tutorial_1/output_preview.png "Output preview")
