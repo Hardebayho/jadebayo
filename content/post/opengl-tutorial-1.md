@@ -45,12 +45,22 @@ In this post, I'll be explaining about OpenGL and how it works. The purpose of t
 
     Once the file is downloaded, extract the file to a suitable location. Copy src/glad.c file to your project or add it to the list of files to be built by your build system. Take the contents of the include directory and add it to your project or add it to the list of include directories of your build system. Once this is done, we're ready to start working.
 
-    Create a main.cpp file in your project and add it to your build system. Include the following headers:
-
+    Create a main.cpp file in your project and add it to your build system. Include the following headers and declare these functions:
     ```c++
     #include "glad/glad.h"
     #include <GLFW/glfw3.h>
     #include <stdio.h>
+    
+    /// This is called when the app starts up.
+    /// Initialize everything you need here
+    void initialize();
+    
+    /// This gets called every frame to update the display
+    void update();
+    
+    /// This gets called when we want to close our application
+    /// Free whatever resources you need to here
+    void dispose();
     ```
     Next, create an ```int main() {}``` function to define our program entry point. Inside the main function, do the following:
     ```c++
@@ -113,79 +123,6 @@ In this post, I'll be explaining about OpenGL and how it works. The purpose of t
 * ### What
     We want to use OpenGL to display a triangle on the screen.
 * ### How
-    Using the structure we had in the first section, we start by creating a VAO (Vertex Array Object) like thus:
-    ```c++
-    uint32_t vao;
-    glGenVertexArrays(1, &vao);
-    ```
-    Next, we need to bind to the VAO, so we do:
-    ```c++
-    glBindVertexArray(vao);
-    ```
-    Make sure that all these calls are made **before** the loop. Next, we'll need to create a VBO (Vertex Buffer Object), so we do:
-    ```c++
-    uint32_t vbo;
-    glGenBuffers(1, &vbo);
-    ```
-    We also bind to it:
-    ```c++
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    ```
-    Then we'll copy the vertex data we want to render to this buffer as thus:
-    ```c++
-    float triangle[] {
-        -0.5, -0.5,
-        0.0, 0.5,
-        0.5, -0.5
-    };
-    glBufferData(GL_ARRAY_BUFFER, sizeof(triangle), triangle, GL_STATIC_DRAW);
-    ```
-    Once that is done, we create an attribute array to define the vertex data:
-    ```c++
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, nullptr);
-    ```
-    Next comes creating the shader program and the vertex and fragment shaders:
-    ```c++
-    int program = glCreateProgram();
-    int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    std::string vs = "#version 330 core\n"
-            "layout(location = 0) in vec4 position;\n"
-                     "void main() {\n"
-                     "  gl_Position = position;\n"
-                     "};";
-    const char* result = vs.c_str();
-    glShaderSource(vertexShader, 1, &result, nullptr);
-    glCompileShader(vertexShader);
-    glAttachShader(program, vertexShader);
-
-    std::string fs = "#version 330 core\n"
-            "layout(location = 0) out vec4 color;\n"
-                     "void main() {\n"
-                     "  color = vec4(1., 0.0, 0.0, 1.0);\n"
-                     "};";
-    int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    result = fs.c_str();
-    glShaderSource(fragmentShader, 1, &result, nullptr);
-    glCompileShader(fragmentShader);
-    glAttachShader(program, fragmentShader);
-
-    glLinkProgram(program);
-    glValidateProgram(program);
-    glUseProgram(program);
-
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
-    ```
-    Finally, we go inside our loop and we draw the triangle:
-    ```c++
-    while (!glfwWindowShouldClose(window)) {
-        glClearColor(0.0, 0, 0, 1.0);
-        glClear(GL_COLOR_BUFFER_BIT);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
-        glfwPollEvents();
-        glfwSwapBuffers(window);
-    }
-    ```
+    
     Run the program and you will see a triangle on your screen that looks like this:
     ![Output Preview](/images/opengl_tutorial_1/output_preview.png "Output preview")
