@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on JAdebayo</title>
+    <link>https://jadebayo.onrender.com/tags/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on JAdebayo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2021, Adebayo Jagunmolu; All rights reserved.</copyright>
+    <lastBuildDate>Sat, 20 Feb 2021 13:40:53 +0000</lastBuildDate><atom:link href="https://jadebayo.onrender.com/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenGL Tutorial Part 2</title>
+      <link>https://jadebayo.onrender.com/post/opengl-tutorial-2/</link>
+      <pubDate>Sat, 20 Feb 2021 13:40:53 +0000</pubDate>
+      
+      <guid>https://jadebayo.onrender.com/post/opengl-tutorial-2/</guid>
+      <description>
+        
+          &lt;h2 id=&#34;come-on&#34;&gt;Come On&lt;/h2&gt;
+&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;
+&lt;p&gt;Redit teque digerit hominumque toris verebor lumina non cervice subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc caluere tempus inhospita parcite confusaque translucet patri vestro qui optatis lumine cognoscere flos nubis! Fronde ipsamque patulos Dryopen deorum.&lt;/p&gt;
+&lt;h2 id=&#34;come-on-1&#34;&gt;Come On&lt;/h2&gt;
+&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo. &lt;!--more--&gt; Redit teque digerit hominumque toris verebor lumina non cervice subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc caluere tempus inhospita parcite confusaque translucet patri vestro qui optatis lumine cognoscere flos nubis! Fronde ipsamque patulos Dryopen deorum.&lt;/p&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>OpenGL Tutorial Part 1</title>
+      <link>https://jadebayo.onrender.com/post/opengl-tutorial-1/</link>
+      <pubDate>Sat, 20 Feb 2021 13:38:53 +0000</pubDate>
+      
+      <guid>https://jadebayo.onrender.com/post/opengl-tutorial-1/</guid>
+      <description>
+        
+          &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In this post, I&#39;ll be explaining about OpenGL and how it works. The purpose of this post is to explain OpenGL in plain english and make it easier to understand. So the approach I&#39;ll be taking is that I&#39;ll be breaking this down into the following components:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;What&lt;/strong&gt; → This is just the topic (Example: Displaying a triangle on the screen with OpenGL)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;How&lt;/strong&gt; → This shows the code to achieve the what clause above and provides some explanations on what the code does.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Why&lt;/strong&gt; → This explains the background behind what is done and why it the approach is taken.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;setting-up-an-opengl-project&#34;&gt;Setting up an OpenGL Project&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h3 id=&#34;what&#34;&gt;What&lt;/h3&gt;
+&lt;p&gt;We want to create a project that allows us to work with OpenGL.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h3 id=&#34;how&#34;&gt;How&lt;/h3&gt;
+&lt;p&gt;First, go to &lt;a href=&#34;https://glfw.org&#34;&gt;GLFW&lt;/a&gt; to download the GLFW library.&lt;/p&gt;
+&lt;p&gt;If you&#39;re running on Windows, click on the &lt;em&gt;Download&lt;/em&gt; tab and scroll down to &lt;em&gt;Windows pre-compiled binaries&lt;/em&gt; section. Click on &lt;em&gt;64-bit Windows binaries&lt;/em&gt; or &lt;em&gt;32-bit Windows binaries&lt;/em&gt; depending on whatever architecture you have. Set up the library as you would any other library.&lt;/p&gt;
+&lt;p&gt;If you&#39;re on a Mac, install glfw from brew or build the library from source. Linux users can download from their package managers too or build the library from source. If you want to build the library from source, just download the source package from top of the Download tab.&lt;/p&gt;
+&lt;p&gt;Once you&#39;ve downloaded the library, make sure you&#39;re linking to the library and including the header paths appropriately. This is platform and toolchain-specific, so I&#39;m not going to cover it here.&lt;/p&gt;
+&lt;p&gt;Next, we need to download the GLAD library. Click &lt;a href=&#34;https://glad.dav1d.de/&#34;&gt;here&lt;/a&gt; to go to the website. Once you&#39;re there, go to the Profile tab and change it to Core. Then go to the API tab and change the &lt;strong&gt;gl&lt;/strong&gt; section from &lt;em&gt;none&lt;/em&gt; to &lt;em&gt;Version 3.3&lt;/em&gt;. Make sure the Profile tab stays at Core. If it changes back to Compatibility, change it back to Core. Next, click on generate. This will take you to a page where you can download a &lt;em&gt;glad.zip&lt;/em&gt; file.&lt;/p&gt;
+&lt;p&gt;Once the file is downloaded, extract the file to a suitable location. Copy src/glad.c file to your project or add it to the list of files to be built by your build system. Take the contents of the include directory and add it to your project or add it to the list of include directories of your build system. Once this is done, we&#39;re ready to start working.&lt;/p&gt;
+&lt;p&gt;Create a main.cpp file in your project and add it to your build system. Include the following headers and declare these functions:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;#34;glad/glad.h&amp;#34;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;GLFW/glfw3.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;#include&lt;/span&gt; &lt;span class=&#34;cpf&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;  
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;/// This is called when the app starts up.
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;/// Initialize everything you need here
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;initialize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;  
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;/// This gets called every frame to update the display
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;update&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;  
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;/// This gets called when we want to close our application
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;/// Free whatever resources you need to here
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;dispose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Next, create an &lt;code&gt;int main() {}&lt;/code&gt; function to define our program entry point. Inside the main function, do the following:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Initialize GLFW
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;glfwInit&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;  
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;glfwWindowHint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GLFW_CONTEXT_VERSION_MAJOR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;glfwWindowHint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GLFW_CONTEXT_VERSION_MINOR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;glfwWindowHint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GLFW_OPENGL_PROFILE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;GLFW_OPENGL_CORE_PROFILE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;  
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Create the window
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GLFWwindow&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;window&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;glfwCreateWindow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;800&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;600&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;OpenGL Tutorial&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;nullptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;nullptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;11&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;glfwTerminate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;12&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;13&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;14&lt;/span&gt;  
+&lt;span class=&#34;ln&#34;&gt;15&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Make the window the current OpenGL context
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;16&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;glfwMakeContextCurrent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;17&lt;/span&gt;  
+&lt;span class=&#34;ln&#34;&gt;18&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Initialize the loader
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;19&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gladLoadGLLoader&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;GLADloadproc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;glfwGetProcAddress&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;20&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;fprintf&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stderr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Failed to initialize GLAD&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;21&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;22&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;23&lt;/span&gt;  
+&lt;span class=&#34;ln&#34;&gt;24&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// set OpenGL to use the entire size of our window
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;25&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;glViewport&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;800&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;600&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;26&lt;/span&gt;  
+&lt;span class=&#34;ln&#34;&gt;27&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// The application loop
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;glfwWindowShouldClose&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;29&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;glfwSwapBuffers&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;30&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;glfwPollEvents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;31&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;32&lt;/span&gt;  
+&lt;span class=&#34;ln&#34;&gt;33&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;glfwDestroyWindow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;34&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;glfwTerminate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;35&lt;/span&gt;  
+&lt;span class=&#34;ln&#34;&gt;36&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Save the file and run your project. If you get a bunch of undefined reference errors, it means you&#39;re not linking GLFW properly. Make sure you check the documentation on their website to figure out how to properly set up GLFW for your platform.&lt;/p&gt;
+&lt;p&gt;If all goes well, you should see a window pop up in your screen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h3 id=&#34;why&#34;&gt;Why&lt;/h3&gt;
+&lt;p&gt;First of all, we call the &lt;code&gt;glfwInit()&lt;/code&gt; function, which simply initializes the internal components of the GLFW library. After that, we did some &lt;code&gt;glfwWindowHint&lt;/code&gt; calls to set the OpenGL profile we want to operate in. This is going to affect the OpenGL functions we&#39;re going to be able to call in our program. Essentially, we&#39;re not going to be able to access the immediate mode APIs when we&#39;re using the 3.3 core profile. Next, we create a &lt;code&gt;GLFWwindow*&lt;/code&gt; object. This represents the window we&#39;re going to be seeing on our screen. We create an instance of the object with &lt;code&gt;glfwCreateWindow(800, 600, &amp;quot;OpenGL Tutorial&amp;quot;, nullptr, nullptr)&lt;/code&gt;. This creates a window of 800 width by 600 height, with the window&#39;s title &amp;quot;OpenGL Tutorial&amp;quot;. We then call &lt;code&gt;glfwTerminate()&lt;/code&gt; if the window creation was not successful to clean up GLFW.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;glfwMakeContextCurrent&lt;/code&gt; function tells OpenGL that we want to make this window the current OpenGL context. This means that all draw calls and operations will be done on the specified window.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) { fprintf(stderr, &amp;quot;Failed to initialize GLAD\n&amp;quot;); return -1; }&lt;/code&gt; just helps us map to the appropriate OpenGL functions and get the appropriate addresses for those functions for the current platform. We could do this ourselves, but it&#39;s pretty tedious and pointless.&lt;/p&gt;
+&lt;p&gt;Afterwards, we just sit in a loop waiting for the user to close the GLFWwindow. Inside the loop, we&#39;re polling for events to check whether the user has triggered any mouse or keyboard events. We&#39;re also swapping the window buffers here. Windows typically have two display buffers. One is the off-screen buffer where the next graphics (frame) is drawn and the other one is the one currently displayed on the screen. When drawing calls are made, OpenGL draws to the off-screen buffer. &lt;code&gt;glfwSwapBuffers&lt;/code&gt; will then take the off-screen buffer and make it the current display buffer, taking the current display buffer and making it the off-screen buffer (hence the &#39;swap&#39;). This is typically done to eliminate &lt;a href=&#34;https://en.wikipedia.org/wiki/Screen_tearing&#34;&gt;screen tearing&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Once the user closes the window and the loop terminates, we clean up GLFW and finish our application.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;displaying-a-triangle&#34;&gt;Displaying a triangle&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;h3 id=&#34;what-1&#34;&gt;What&lt;/h3&gt;
+&lt;p&gt;We want to use OpenGL to display a triangle on the screen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;h3 id=&#34;how-1&#34;&gt;How&lt;/h3&gt;
+&lt;p&gt;Run the program and you will see a triangle on your screen that looks like this:
+&lt;img src=&#34;https://jadebayo.onrender.com/images/opengl_tutorial_1/output_preview.png&#34; alt=&#34;Output Preview&#34; title=&#34;Output preview&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
