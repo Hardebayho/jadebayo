@@ -3,16 +3,16 @@ title: "Libavformat Tutorial" # Title of the blog post.
 date: 2021-04-05T20:10:23Z # Date of post creation.
 description: "Article description." # Description used for search engine.
 featured: true # Sets if post is a featured post, making appear on the home page side bar.
-draft: true # Sets whether to render this page. Draft of true will not be rendered.
-toc: false
-# menu: main
+draft: false # Sets whether to render this page. Draft of true will not be rendered.
+toc: true
+menu: main
 featureImage: "/logos/logo.png"
 thumbnail: "/logos/logo.png"
 shareImage: "/logos/logo.png"
 codeMaxLines: 10
 codeLineNumbers: false
 figurePositionShow: true
-#series: "ffmpeg-tutorials"
+series: "ffmpeg-tutorials"
 categories:
   - Technology
   - Multimedia
